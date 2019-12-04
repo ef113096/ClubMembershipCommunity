@@ -1,9 +1,10 @@
 ﻿<!DOCTYPE html>
+
 <html> 
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>@ViewBag.Title - My Telerik MVC Application</title>
+        <title>@ViewBag.Title</title>
     	<link href="https://kendo.cdn.telerik.com/2019.3.1023/styles/kendo.bootstrap-v4.min.css" rel="stylesheet" type="text/css" />
 	<link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
 	<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
@@ -19,7 +20,7 @@
             <div class="container p-0 p-sm-3">
                 <div class="navbar-header">
                     <button id="configure" class="k-rpanel-toggle k-button btn-toggle"><span class="k-icon k-i-menu"></span></button>
-                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("American Wine Society Membership Site Portal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 </div>
                 <div id="responsive-panel" class="navbar-left">
                     @(Html.Kendo().Menu()

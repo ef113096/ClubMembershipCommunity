@@ -5,11 +5,13 @@
     <div class="jumbotron">
         <p><img src="~/Images/AmericanWineSocietyLogo.png" /></p>
         <p class="lead text-muted">Welcome to the American Wine Society Chapter Membership Page.</p>
-        @(Html.Kendo().Button()
+        @*@(Html.Kendo().Button()
         .Name("btnLogin")
         .Content("Login into your Chapter's Membership Site")
         .Events(ev => ev.Click("btnLogin_Click"))
-        .HtmlAttributes(new { @class = "btn-primary" }))
+        .HtmlAttributes(new { @class = "btn-primary" }))*@
+
+        @Html.ActionLink("Login into your Chapter's Membership Site", "UserLogin","Login")
     </div>
 
 @(Html.Kendo().PanelBar()
@@ -42,3 +44,11 @@
             </text>);
     })
 )
+
+<script>
+    function btnLogin_Click() {
+        alert("Hello!");
+        var url = '@Url.Action("Contact","Home")';
+        window.Location.href = url;
+    }
+</script>

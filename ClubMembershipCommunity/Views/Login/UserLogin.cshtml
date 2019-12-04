@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "UserLogin";
+}
+
+    <div class="content">
+        <h2 style="text-align:center">Login</h2>
+        <p>Email Address</p>
+        <p>
+            @(Html.Kendo().TextBox()
+                .Name("txtUserName")
+                .HtmlAttributes(new { style = "width:325px;" })
+            )
+        </p>
+        <p>Password</p>
+        <p>
+            @(Html.Kendo().TextBox()
+                .Name("txtPassword")
+                .HtmlAttributes(new { style = "width:325px;" })
+            )
+        </p>
+        <p>
+            @Html.ActionLink("I Forgot My Password", "ForgotPassword", "Login")
+        </p>
+
+        <p>
+            @Html.ActionLink("Submit", "ProcessUserLogin", "Login", new { @class = "btn btn-primary", @role = "button" })
+        </p>
+
+    </div>
+
+<style>
+    .content {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%,-50%);
+        /*border: 1px solid blue;*/
+        padding: 10px;
+        width: 350px;
+       
+    }
+    
+</style>
+
