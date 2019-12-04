@@ -20,7 +20,7 @@
             <div class="container p-0 p-sm-3">
                 <div class="navbar-header">
                     <button id="configure" class="k-rpanel-toggle k-button btn-toggle"><span class="k-icon k-i-menu"></span></button>
-                    @Html.ActionLink("American Wine Society Membership Site Portal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink(System.Configuration.ConfigurationManager.AppSettings["AppName"].ToString(), "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 </div>
                 <div id="responsive-panel" class="navbar-left">
                     @(Html.Kendo().Menu()
@@ -41,12 +41,12 @@
             </div>
         </main>
 
-        <footer class="footer text-center d-flex align-items-center">
+        @*<footer class="footer text-center d-flex align-items-center">
             <div class="container pb-0">
                 <hr />
                 <p>Copyright &copy; @DateTime.Now.Year Progress Software Corporation and/or its subsidiaries or affiliates. All Rights Reserved.</p>
             </div>
-        </footer>
+        </footer>*@
 
         <script>
             $(document).ready(function () {

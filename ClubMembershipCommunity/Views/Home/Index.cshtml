@@ -1,20 +1,22 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home - " + System.Configuration.ConfigurationManager.AppSettings["AppName"].ToString();
 }
 
     <div class="jumbotron">
         <p><img src="~/Images/AmericanWineSocietyLogo.png" /></p>
-        <p class="lead text-muted">Welcome to the American Wine Society Chapter Membership Page.</p>
+        <p class="lead text-muted">Welcome to the American Wine Society Local Chapter Membership Page.</p>
         @*@(Html.Kendo().Button()
         .Name("btnLogin")
         .Content("Login into your Chapter's Membership Site")
         .Events(ev => ev.Click("btnLogin_Click"))
         .HtmlAttributes(new { @class = "btn-primary" }))*@
 
-        @Html.ActionLink("Login into your Chapter's Membership Site", "UserLogin","Login")
+        <p>@Html.ActionLink("Login into your local chapter's Membership Site", "UserLogin", "Login")</p>
+
+        <a href="http://www.AmericanWineSociety.org" target="_blank">To access the National AWS website click here</a>
     </div>
 
-@(Html.Kendo().PanelBar()
+@*@(Html.Kendo().PanelBar()
     .Name("IntroPanelBar")
     .Items(items =>
     {
@@ -43,7 +45,7 @@
                 <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a>
             </text>);
     })
-)
+)*@
 
 <script>
     function btnLogin_Click() {

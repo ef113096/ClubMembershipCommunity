@@ -4,7 +4,7 @@
 }
 
     <div class="content">
-        <h2 style="text-align:center">Login</h2>
+        <h2 style="text-align:center">Club Member Login</h2>
         <p>Email Address</p>
         <p>
             @(Html.Kendo().TextBox()
@@ -24,7 +24,13 @@
         </p>
 
         <p>
-            @Html.ActionLink("Submit", "ProcessUserLogin", "Login", new { @class = "btn btn-primary", @role = "button" })
+            @(Html.Kendo().Button()
+                .Name("btnSubmit")
+                .Content("Submit")
+                .HtmlAttributes(new { @class= "btn btn-primary"})
+                .Events(ev => ev.Click("btnSubmit_Click"))
+                )
+
         </p>
 
     </div>
@@ -41,6 +47,29 @@
         width: 350px;
        
     }
-    
 </style>
+
+<script>
+    function btnSubmit_Click() {
+
+        // Get the values from the UserName and Password textboxes
+        var userName = $('#txtUserName').val();
+        var passWord = $('#txtPassword').val();
+
+        // Check for blank User Name
+        if (userName == '') {
+            alert("User Name cannot be blank!");
+            $('#txtUserName').focus();
+            return;
+        }
+
+        // Check for blank Password
+        if (passWord == '') {
+            alert("Password cannot be blank!");
+            $('#txtPassword').focus();
+            return;
+        }
+
+    }
+</script>
 
