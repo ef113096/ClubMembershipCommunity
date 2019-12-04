@@ -2,50 +2,56 @@
     ViewBag.Title = "Home - " + System.Configuration.ConfigurationManager.AppSettings["AppName"].ToString();
 }
 
-    <div class="jumbotron">
+
+<div class="row">
+    <div class="column">
         <p><img src="~/Images/AmericanWineSocietyLogo.png" /></p>
-        <p class="lead text-muted">Welcome to the American Wine Society Local Chapter Membership Page.</p>
+        <p class="lead text-muted">Welcome to the American Wine Society Local Chapter Portal.</p>
         @*@(Html.Kendo().Button()
-        .Name("btnLogin")
-        .Content("Login into your Chapter's Membership Site")
-        .Events(ev => ev.Click("btnLogin_Click"))
-        .HtmlAttributes(new { @class = "btn-primary" }))*@
+            .Name("btnLogin")
+            .Content("Login into your Chapter's Membership Site")
+            .Events(ev => ev.Click("btnLogin_Click"))
+            .HtmlAttributes(new { @class = "btn-primary" }))*@
 
         <p>@Html.ActionLink("Login into your local chapter's Membership Site", "UserLogin", "Login")</p>
 
         <a href="http://www.AmericanWineSociety.org" target="_blank">To access the National AWS website click here</a>
     </div>
+    <div class="column" style="padding-top:50px;padding-left:15px">
+        <img src="~/Images/WineGlasses.jpg" style="height:85%;width:85%"  />
+    </div>
+</div>
 
 @*@(Html.Kendo().PanelBar()
-    .Name("IntroPanelBar")
-    .Items(items =>
-    {
-        items.Add()
-            .Text("Getting Started")
-            .Selected(true)
-            .Expanded(true)
-            .Content(@<text>
-                <p>
-                    ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                    enables a clean separation of concerns and gives you full control over markup
-                    for enjoyable, agile development.
-                </p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a>
-            </text>);
-        items.Add()
-            .Text("Get more libraries")
-            .Content(@<text>
-                <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a>
-            </text>);
-        items.Add()
-            .Text("Web Hosting")
-            .Content(@<text>
-                <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a>
-            </text>);
-    })
-)*@
+        .Name("IntroPanelBar")
+        .Items(items =>
+        {
+            items.Add()
+                .Text("Getting Started")
+                .Selected(true)
+                .Expanded(true)
+                .Content(@<text>
+                    <p>
+                        ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                        enables a clean separation of concerns and gives you full control over markup
+                        for enjoyable, agile development.
+                    </p>
+                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a>
+                </text>);
+            items.Add()
+                .Text("Get more libraries")
+                .Content(@<text>
+                    <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a>
+                </text>);
+            items.Add()
+                .Text("Web Hosting")
+                .Content(@<text>
+                    <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a>
+                </text>);
+        })
+    )*@
 
 <script>
     function btnLogin_Click() {
@@ -54,3 +60,16 @@
         window.Location.href = url;
     }
 </script>
+
+<style>
+    .column {
+        float: left;
+        width: 50%;
+    }
+
+    /*.row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }*/
+</style>

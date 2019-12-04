@@ -20,7 +20,8 @@
             <div class="container p-0 p-sm-3">
                 <div class="navbar-header">
                     <button id="configure" class="k-rpanel-toggle k-button btn-toggle"><span class="k-icon k-i-menu"></span></button>
-                    @Html.ActionLink(System.Configuration.ConfigurationManager.AppSettings["AppName"].ToString(), "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    <font color="lightgrey" size="4">AWS Local Chapter Membership Portal</font>
+                    @*@Html.ActionLink(System.Configuration.ConfigurationManager.AppSettings["AppName"].ToString(), "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
                 </div>
                 <div id="responsive-panel" class="navbar-left">
                     @(Html.Kendo().Menu()
