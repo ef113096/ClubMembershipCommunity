@@ -13,7 +13,7 @@
             .Events(ev => ev.Click("btnLogin_Click"))
             .HtmlAttributes(new { @class = "btn-primary" }))*@
 
-        <p>@Html.ActionLink("Login into your local chapter's Membership Site", "UserLogin", "Login")</p>
+        <p>@Html.ActionLink("Login into your local chapter's Membership Site", "UserLogin", "Login", null, new { @class = "btn btn-primary" })</p>
 
         <a href="http://www.AmericanWineSociety.org" target="_blank">To access the National AWS website click here</a>
     </div>
