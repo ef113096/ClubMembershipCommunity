@@ -9,6 +9,7 @@ namespace ClubMembershipCommunity.Controllers
     public class LoginController : Controller
     {
         // GET: Login
+        [Route("Login")]
         public ActionResult UserLogin()
         {
             return View();
