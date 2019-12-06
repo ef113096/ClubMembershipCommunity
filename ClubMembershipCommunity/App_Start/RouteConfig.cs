@@ -11,7 +11,10 @@ namespace ClubMembershipCommunity
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            // The following line eliminates the ACTION name from the URL.
+            // Assuming a controller named "Login" this statement would go above the ActionResult:  [Route("Login")]
             routes.MapMvcAttributeRoutes();
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(

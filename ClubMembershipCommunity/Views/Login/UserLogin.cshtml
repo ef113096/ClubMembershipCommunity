@@ -27,13 +27,16 @@
             @(Html.Kendo().Button()
                 .Name("btnSubmit")
                 .Content("Submit")
-                .HtmlAttributes(new { @class= "btn btn-primary"})
+                .HtmlAttributes(new { @class = "btn btn-primary" })
                 .Events(ev => ev.Click("btnSubmit_Click"))
-                )
+            )
 
         </p>
 
+        <div id="loginResults" style="color:red;visibility:hidden">The username or password is incorrect!</div>
     </div>
+<br/>
+
 
 <style>
     .content {
@@ -45,11 +48,27 @@
         /*border: 1px solid blue;*/
         padding: 10px;
         width: 350px;
-       
     }
 </style>
 
 <script>
+
+    // Create an event for when the 'txtUserName' textbox gets focus
+    // after an unsuccessful login.
+    const txtUserName = document.querySelector('#txtUserName');
+    txtUserName.addEventListener('focus', (event) => {
+        $('#loginResults').css('visibility','hidden');
+        $('#txtPassword').val('').change();
+    });
+
+    // Create an event for when the 'txtPassword' textbox gets focus
+    // after an unsuccessful login.
+    const txtPassword = document.querySelector('#txtPassword');
+    txtPassword.addEventListener('focus', (event) => {
+        $('#loginResults').css('visibility','hidden');
+        $('#txtPassword').val('').change();
+    });
+
     function btnSubmit_Click() {
 
         // Get the values from the UserName and Password textboxes
@@ -69,6 +88,18 @@
             $('#txtPassword').focus();
             return;
         }
+        
+      $.ajax({
+        type: 'GET',
+        url: '@Url.Action("ProcessLogin", "Login")',
+          success: function (result) {
+              if (result == 'False') {
+                  // Show the login error message.
+                  $('#loginResults').css('visibility','visible');
+                  return;
+             }
+        }
+      });
 
     }
 </script>

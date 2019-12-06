@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace ClubMembershipCommunity.Controllers
 {
     public class LoginController : Controller
@@ -13,6 +14,12 @@ namespace ClubMembershipCommunity.Controllers
         public ActionResult UserLogin()
         {
             return View();
+        }
+
+        public ActionResult ProcessLogin()
+        {
+            bool authenticated = false;
+            return Content(authenticated.ToString(), "text/plain");
         }
     }
 }
