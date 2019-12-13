@@ -9,8 +9,9 @@ namespace ClubMembershipCommunity.Controllers
     public class UserController : Controller
     {
         // GET: User
-        public ActionResult Index()
+        public ActionResult Index(string userFullName)
         {
+            ViewBag.UserFullName = userFullName;
             return View();
         }
     }

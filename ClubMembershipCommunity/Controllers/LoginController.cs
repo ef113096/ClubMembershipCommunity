@@ -18,8 +18,8 @@ namespace ClubMembershipCommunity.Controllers
 
         public ActionResult ProcessLogin(string emailAddress, string password)
         {
-            string authenticated = "true";
-            return Content(authenticated.ToString().ToLower(), "text/plain");
+            var data = new { result = "admin", name = "Earl Francis" };
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
     }
 }
