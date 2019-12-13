@@ -16,10 +16,10 @@ namespace ClubMembershipCommunity.Controllers
             return View();
         }
 
-        public ActionResult ProcessLogin()
+        public ActionResult ProcessLogin(string emailAddress, string password)
         {
-            bool authenticated = false;
-            return Content(authenticated.ToString(), "text/plain");
+            string authenticated = "true";
+            return Content(authenticated.ToString().ToLower(), "text/plain");
         }
     }
 }

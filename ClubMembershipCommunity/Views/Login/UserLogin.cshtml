@@ -90,15 +90,22 @@
         }
         
       $.ajax({
-        type: 'GET',
-        url: '@Url.Action("ProcessLogin", "Login")',
+        type: 'POST',
+        url: '@Url.Action("ProcessLogin", "Login")?emailAddress=' + userName + '&password=' + passWord,
           success: function (result) {
-              if (result == 'False') {
+              if (result == 'false') {
                   // Show the login error message.
                   $('#loginResults').html('The username or password is incorrect!');
-                  $('#loginResults').css('visibility','visible');
+                  $('#loginResults').css('visibility', 'visible');
                   return;
-             }
+              }
+              else if (result == 'true') {
+                  window.location.href = '@Url.Action("Index","User")';
+              }
+              else if (result == 'admin')
+              {
+                  window.location.href = '@Url.Action("Index","Admin")';
+              }
         }
       });
 
