@@ -8,7 +8,7 @@
         <p>Email Address</p>
         <p>
             @(Html.Kendo().TextBox()
-                .Name("txtUserName")
+                .Name("txtEmailAddress")
                 .HtmlAttributes(new { style = "width:325px;" })
             )
         </p>
@@ -16,7 +16,7 @@
         <p>
             @(Html.Kendo().TextBox()
                 .Name("txtPassword")
-                .HtmlAttributes(new { style = "width:325px;" })
+                .HtmlAttributes(new { style = "width:325px;", type = "password"  })
             )
         </p>
         <p>
@@ -27,7 +27,7 @@
             @(Html.Kendo().Button()
                 .Name("btnSubmit")
                 .Content("Submit")
-                .HtmlAttributes(new { @class = "btn btn-primary" })
+                .HtmlAttributes(new { @class = "btn btn-primary"})
                 .Events(ev => ev.Click("btnSubmit_Click"))
             )
 
@@ -55,8 +55,8 @@
 
     // Create an event for when the 'txtUserName' textbox gets focus
     // after an unsuccessful login.
-    const txtUserName = document.querySelector('#txtUserName');
-    txtUserName.addEventListener('focus', (event) => {
+    const txtEmailAddress = document.querySelector('#txtEmailAddress');
+    txtEmailAddress.addEventListener('focus', (event) => {
         $('#loginResults').css('visibility','hidden');
         $('#txtPassword').val('').change();
     });
@@ -72,43 +72,44 @@
     function btnSubmit_Click() {
 
         // Get the values from the UserName and Password textboxes
-        var userName = $('#txtUserName').val();
+        var emailAddress = $('#txtEmailAddress').val();
         var passWord = $('#txtPassword').val();
 
-        // Check for blank User Name
-        if (userName == '') {
-            $('#loginResults').html('The username cannot be blank!');
-            $('#loginResults').css('visibility','visible');
+        // Check for blank Email Address
+        if (emailAddress == '') {
+            $('#loginResults').html('The email address cannot be blank!');
+            $('#loginResults').css('visibility', 'visible');
             return;
         }
 
         // Check for blank Password
         if (passWord == '') {
             $('#loginResults').html('The password cannot be blank!');
-            $('#loginResults').css('visibility','visible');
+            $('#loginResults').css('visibility', 'visible');
             return;
         }
-        
-      $.ajax({
-        type: 'POST',
-        url: '@Url.Action("ProcessLogin", "Login")?emailAddress=' + userName + '&password=' + passWord,
-          success: function (data) {
-              if (data.result == 'false') {
-                  // Show the login error message.
-                  $('#loginResults').html('The username or password is incorrect!');
-                  $('#loginResults').css('visibility', 'visible');
-                  return;
-              }
-              else if (data.result == 'true') {
-                  window.location.href = '@Url.Action("Index","User")';
-              }
-              else if (data.result == 'admin')
-              {
-                  window.location.href = '@Url.Action("Index","Admin")?userFullName=' + data.name;
-              }
-        }
-      });
 
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("ProcessLogin", "Login")?emailAddress=' + emailAddress + '&password=' + passWord,
+            success: function (userInfo) {
+                if (userInfo.LoginResults == 'false') {
+                    // Show the login error message.
+                    $('#loginResults').html('The email address or password is incorrect!');
+                    $('#loginResults').css('visibility', 'visible');
+                    return;
+                }
+                else if (userInfo.LoginResults == 'true') {
+                    // Successful user login
+                    window.location.href = '@Url.Action("Index","Admin")?ID=' + userInfo.ID + '&fullName=' + userInfo.FullName + "&chapterName=" + userInfo.ChapterName;
+                }
+                else if (userInfo.LoginResults == 'admin') {
+                    // Successful admin login
+                    window.location.href = '@Url.Action("Index","Admin")?ID=' + userInfo.ID + '&fullName=' + userInfo.FullName + "&chapterName=" + userInfo.ChapterName;
+                }
+            }
+        });
     }
+
 </script>
 

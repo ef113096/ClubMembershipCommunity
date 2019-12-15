@@ -1,7 +1,23 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Main Chapter Menu";
 }
 
-<h2>Welcome @ViewBag.UserFullName</h2>
+<div class="alignleft">Welcome @ViewBag.UserFullName</div>
+<div class="alignright">@ViewBag.ChapterName</div>
+<div style="clear: both;"></div>
+<hr />
 
+<div id="adminMainMenu">
+    @(Html.Kendo().Menu()
+        .Name("adminMainMenu")
+        .Items(items =>
+        {
+            items.Add()
+                .Text("Calendar");
+            items.Add()
+                .Text("Member List");
+
+        })
+    )
+</div>
