@@ -12,6 +12,7 @@ namespace ClubMembershipCommunity.Controllers
         // GET: Admin
         public ActionResult Index(int ID, string fullName, string chapterName)
         {
+            ViewBag.Title = chapterName;
             ViewBag.UserFullName = fullName;
             ViewBag.ChapterName = chapterName;
             return View();

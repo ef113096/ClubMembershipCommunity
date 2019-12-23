@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Calendar";
+}
+
+@(Html.Kendo().Scheduler<ClubMembershipCommunity.Models.CalendarEvents>()
+        .Name("Calendar")
+        .Date(DateTime.Today)
+        .StartTime(DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek))
+        .EndTime(DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + (int)DayOfWeek.Friday))
+        .Editable(false)
+        //.Height(600)
+
+        .Views(views =>
+    {
+        views.DayView();
+        views.WeekView();
+        views.WeekView(weekView => weekView.Selected(true));
+        views.MonthView(monthView => monthView.Selected(true));
+        views.AgendaView();
+    })
+
+        .BindTo(Model)
+)

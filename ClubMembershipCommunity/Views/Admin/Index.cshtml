@@ -1,11 +1,7 @@
-﻿
-@{
-    ViewBag.Title = "Main Chapter Menu";
-}
-
-<div class="alignleft">Welcome @ViewBag.UserFullName</div>
+﻿@*<div class="alignleft">Welcome @ViewBag.UserFullName</div>
 <div class="alignright">@ViewBag.ChapterName</div>
-<div style="clear: both;"></div>
+<div style="clear: both;"></div>*@
+
 <hr />
 
 <div id="adminMainMenu">
@@ -14,7 +10,7 @@
         .Items(items =>
         {
             items.Add()
-                .Text("Calendar");
+                .Text("Calendar").Action("Calendar", "User", new { area = "" });
             items.Add()
                 .Text("Member List");
 

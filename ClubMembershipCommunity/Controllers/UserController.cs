@@ -15,5 +15,10 @@ namespace ClubMembershipCommunity.Controllers
             ViewBag.ChapterName = chapterName;
             return View();
         }
+
+        public ActionResult Calendar()
+        {
+            return View();
+        }
     }
 }
